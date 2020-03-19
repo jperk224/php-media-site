@@ -1,4 +1,8 @@
 <?php
+
+include("inc/data.php");
+include("inc/functions.php");
+
 $pageTitle = "Personal Media Library";
 $section = NULL;
 
@@ -9,8 +13,14 @@ include("inc/header.php"); ?>
 
 				<h2>May we suggest something?</h2>
 
-								<ul class="items">
-					<li><a href="details.php?id=201"><img src="img/media/forest_gump.jpg" alt="Forrest Gump"><p>View Details</p></a></li><li><a href="details.php?id=204"><img src="img/media/princess_bride.jpg" alt="The Princess Bride"><p>View Details</p></a></li><li><a href="details.php?id=302"><img src="img/media/elvis_presley.jpg" alt="Elvis Forever"><p>View Details</p></a></li><li><a href="details.php?id=303"><img src="img/media/garth_brooks.jpg" alt="No Fences"><p>View Details</p></a></li>								
+				<ul class="items">
+				<?php 
+				// create a random array of 4 elements from the main array to loop through on the menu page
+				$randomArray = randomArray($catalog, 4);
+				//var_dump($randomArray);
+            	foreach($randomArray as $id) {        // loop trough $catalog and print each item w/ li tags
+                	echo(getItemHtml($id, $catalog[$id]));
+            	} ?>
 				</ul>
 
 			</div>
